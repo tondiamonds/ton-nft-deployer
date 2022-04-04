@@ -1,0 +1,9 @@
+node_modules
+.env
+nfts
+yarn.lock
+files
+.vscode
+nfts.csv
+output/web
+dist
