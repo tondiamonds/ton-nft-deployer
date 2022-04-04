@@ -2,7 +2,7 @@
 
 > ❤️ Инструкция и инструменты подготовлены командой [TON Diamonds](https://ton.diamonds) - первый NFT проект в TON.
 
-> [English version](README.md)
+> [English version](https://github.com/tondiamonds/ton-nft-deployer/blob/main/README.md)
 
 Если вы автор NFT-коллекции для TON, но не обладаете большими техническими навыками, вам лучше подождать когда NFT-маркетпейсы (например, [https://getgems.io](https://getgems.io)) сделают у себя UI для создания коллекций.
 
@@ -94,7 +94,7 @@
 
 В этом репозитории содержится open-source скрипт на javascript для деплоя NFT-коллекции.
 
-В [script.md](script.md) описано как его запускать.
+В [script.md](https://github.com/tondiamonds/ton-nft-deployer/blob/main/script.md) описано как его запускать.
 
 Параметры .env совпадают с параметрами веб-страницы, так что описание параметров можете посмотреть в предыдущем параграфе.
 

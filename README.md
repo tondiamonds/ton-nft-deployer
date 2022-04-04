@@ -2,8 +2,6 @@
 
 > ❤️ The instructions and tools were provided by the [TON Diamonds](https://ton.diamonds) - the first NFT project in TON.
 
-> [Russian version](README_ru.md)
-
 If you are an NFT-collection author for TON but don't have good technical skills, you better wait until when NFT-marketplaces (like https://getgems.io) make their UI for creating collections.
 
 The marketplaces are currently working on this functionality, creating a collection via the marketplace website will be as easy as posting a photo to social networks.
@@ -95,7 +93,7 @@ The source code of the web page can be found in this repository.
 
 This repository contains an open-source script in javascript to deploy the NFT collection.
 
-The [script.md](script.md) describes how to run it.
+The [script.md](https://github.com/tondiamonds/ton-nft-deployer/blob/main/script.md) describes how to run it.
 
 The parameters of the .env are the same as those of the web page, so you can see the description of the parameters in the previous paragraph.
 
