@@ -1,4 +1,4 @@
-# Creating an NFT collection in the TON core network
+# Creating an NFT collection in the TON main network
 
 > ❤️ The instructions and tools were provided by the [TON Diamonds](https://ton.diamonds) - the first NFT project in TON.
 
@@ -66,9 +66,9 @@ You can change this path later on if you need to.
 
    For example:
 ```
-   0,EQArpDCADpdZ23S8CeqmC-uvYX8PepLj9bW5I_FiVZP9s4ma
-   1,EQARz2mCJKlueMQNrbgNVnSC1vb8Jt3JBTxRievSnUYULpnv
-   2
+0,EQArpDCADpdZ23S8CeqmC-uvYX8PepLj9bW5I_FiVZP9s4ma
+1,EQARz2mCJKlueMQNrbgNVnSC1vb8Jt3JBTxRievSnUYULpnv
+2
 ```
 
    The structure of the list for NFT deployment has a strict order. The numbering starts from zero and must have no gaps (0, 1, 2, 3, etc).
