@@ -13,9 +13,11 @@ const FileInput = styled.input`
 export default function NftInput({
   nfts,
   setNfts,
+  addLog,
 }: {
   nfts: Nft[]
   setNfts: React.Dispatch<React.SetStateAction<Nft[]>>
+  addLog: (text: string) => void
 }) {
   const inputChange = async (e) => {
     const files: File[] = e.target.files
@@ -25,9 +27,13 @@ export default function NftInput({
     }
 
     const content = await files[0].text()
-    const nfts = parseCsv(content)
 
-    setNfts(nfts)
+    try {
+      const nfts = parseCsv(content)
+      setNfts(nfts)
+    } catch (e) {
+      addLog(`${e}`)
+    }
   }
 
   return (

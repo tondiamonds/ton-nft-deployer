@@ -131,7 +131,7 @@ function App() {
       </Description>
 
       <FormConfig config={config} setConfig={setConfig} />
-      <NftInput nfts={nfts} setNfts={setNfts} />
+      <NftInput nfts={nfts} setNfts={setNfts} addLog={addLog} />
 
       <DeployButton onClick={startDeploy}>Start deploy!</DeployButton>
       <DeployButton onClick={stopDeploy}>Stop deploy</DeployButton>
