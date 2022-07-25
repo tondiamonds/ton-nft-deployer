@@ -39,7 +39,7 @@ export async function deployNft(this: Deployer, nftCollection: NftCollectionType
   }
 
   // 0.05 should be enough to deploy nft
-  const amount = TonWeb.utils.toNano(0.05)
+  const amount = TonWeb.utils.toNano("0.05")
   const walletAddress = await this.wallet.getAddress()
 
   // If we have seqno in db, use it to rebroadcast tx
