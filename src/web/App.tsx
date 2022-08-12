@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { Config as DeployConfig, Nft } from '../models'
@@ -58,7 +58,7 @@ function App() {
 
   const [nfts, setNfts] = useState<Nft[]>([])
   const [logs, setLogs] = useState<string[]>([])
-  const [deployer, setDeployer] = useState(null)
+  const [deployer, setDeployer] = useState<Deployer | null>(null)
 
   // On mount load nfts and config if exists
   useEffect(() => {
@@ -68,14 +68,18 @@ function App() {
       const deployConfig = window.localStorage.getItem('ton_nft_deploy_config')
       const deployNfts = window.localStorage.getItem('ton_nft_deploy_nfts')
 
-      const cnf = JSON.parse(deployConfig)
-      if (cnf) {
-        setConfig(cnf)
+      if (deployConfig) {
+        const cnf = JSON.parse(deployConfig)
+        if (cnf) {
+          setConfig(cnf)
+        }
       }
 
-      const nft = JSON.parse(deployNfts)
-      if (nft) {
-        setNfts(nft)
+      if (deployNfts) {
+        const nft = JSON.parse(deployNfts)
+        if (nft) {
+          setNfts(nft)
+        }
       }
     }
   }, [])

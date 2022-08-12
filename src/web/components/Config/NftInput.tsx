@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Nft } from '../../../models'
 import { parseCsv } from '../../../parseCsv'
