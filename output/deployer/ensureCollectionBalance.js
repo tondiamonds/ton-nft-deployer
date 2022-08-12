@@ -38,7 +38,7 @@ function ensureCollectionBalance(nftCollection) {
             secretKey: this.key.secretKey,
             toAddress: nftCollectionAddress.toString(true, true, true),
             amount: tonweb_1.default.utils.toNano(this.config.topupAmount),
-            seqno: seqno,
+            seqno,
             payload: '',
             sendMode: 3,
         }).send);

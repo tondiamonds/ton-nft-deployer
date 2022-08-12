@@ -32,7 +32,7 @@ export async function ensureCollectionBalance(this: Deployer, nftCollection: Nft
       secretKey: this.key.secretKey,
       toAddress: nftCollectionAddress.toString(true, true, true),
       amount: TonWeb.utils.toNano(this.config.topupAmount),
-      seqno: seqno,
+      seqno,
       payload: '', // body
       sendMode: 3,
     }).send

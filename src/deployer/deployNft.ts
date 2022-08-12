@@ -39,6 +39,7 @@ export async function deployNft(this: Deployer, nftCollection: NftCollectionType
   }
 
   // 0.05 should be enough to deploy nft
+  // eslint-disable-next-line prettier/prettier
   const amount = TonWeb.utils.toNano("0.05")
   const walletAddress = await this.wallet.getAddress()
 
@@ -56,8 +57,8 @@ export async function deployNft(this: Deployer, nftCollection: NftCollectionType
     this.wallet.methods.transfer({
       secretKey: this.key.secretKey,
       toAddress: nftCollection.address,
-      amount: amount,
-      seqno: seqno,
+      amount,
+      seqno,
       payload: await nftCollection.createMintBody({
         amount,
         itemIndex: toDeploy.id,
