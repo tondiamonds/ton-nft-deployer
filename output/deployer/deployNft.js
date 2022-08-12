@@ -42,7 +42,7 @@ function deployNft(nftCollection) {
             return;
         }
         // 0.05 should be enough to deploy nft
-        const amount = tonweb_1.default.utils.toNano(0.05);
+        const amount = tonweb_1.default.utils.toNano("0.05");
         const walletAddress = yield this.wallet.getAddress();
         // If we have seqno in db, use it to rebroadcast tx
         const seqno = toDeploy.seqno ? toDeploy.seqno : yield (0, utils_1.callTonApi)(this.wallet.methods.seqno().call);
