@@ -71,7 +71,13 @@ function App() {
       if (deployConfig) {
         const cnf = JSON.parse(deployConfig)
         if (cnf) {
-          setConfig(cnf)
+          setConfig((oldConfig) => {
+            return {
+              ...oldConfig,
+              ...cnf,
+              walletMnemonic: oldConfig.walletMnemonic,
+            }
+          })
         }
       }
 
@@ -89,10 +95,13 @@ function App() {
       return
     }
 
-    if (window.localStorage) {
-      window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(config))
-      window.localStorage.setItem('ton_nft_deploy_nfts', JSON.stringify(nfts))
+    if (!window.localStorage) {
+      return
     }
+
+    const configWithoudMnemonic = { ...config, walletMnemonic: undefined }
+    window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(configWithoudMnemonic))
+    window.localStorage.setItem('ton_nft_deploy_nfts', JSON.stringify(nfts))
   }, [config, nfts])
 
   const addLog = (text: string) => {
