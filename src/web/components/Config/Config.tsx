@@ -32,7 +32,7 @@ function Config({
     <FormContainer>
       <WalletMnemonic config={config} setConfig={setConfig} />
       <WalletType config={config} setConfig={setConfig} />
-      <WalletAddress config={config} setConfig={setConfig} />
+      <WalletAddress config={config} />
       <StartIndex config={config} setConfig={setConfig} />
       <TonApiUrl config={config} setConfig={setConfig} />
       <TonApiKey config={config} setConfig={setConfig} />

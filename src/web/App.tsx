@@ -99,8 +99,8 @@ function App() {
       return
     }
 
-    const configWithoudMnemonic = { ...config, walletMnemonic: undefined }
-    window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(configWithoudMnemonic))
+    const configWithoutMnemonic = { ...config, walletAddress: undefined }
+    window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(configWithoutMnemonic))
     window.localStorage.setItem('ton_nft_deploy_nfts', JSON.stringify(nfts))
   }, [config, nfts])
 
@@ -111,7 +111,7 @@ function App() {
   const startDeploy = async () => {
     try {
       await checkConfig(config)
-      const _deployer = new Deployer(config, nfts, addLog)
+      const _deployer = new Deployer(config, nfts, true, addLog)
       await _deployer.start()
       setDeployer(_deployer)
     } catch (e) {

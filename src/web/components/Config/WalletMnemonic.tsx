@@ -11,6 +11,13 @@ export function WalletMnemonic({
   config: DeployConfig
   setConfig: React.Dispatch<React.SetStateAction<DeployConfig>>
 }) {
+  const onMnemonicChange = async (newMnemonic: string) => {
+    setConfig((c) => ({
+      ...c,
+      walletMnemonic: newMnemonic,
+    }))
+  }
+
   return (
     <InputGroup>
       <Label htmlFor="walletmnemonic">
@@ -21,7 +28,7 @@ export function WalletMnemonic({
         id="walletmnemonic"
         type="text"
         value={config.walletMnemonic}
-        onChange={(e) => setConfig((c) => ({ ...c, walletMnemonic: e.target.value }))}
+        onChange={(e) => onMnemonicChange(e.target.value)}
       />
     </InputGroup>
   )

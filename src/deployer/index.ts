@@ -23,17 +23,24 @@ class Deployer {
   protected mnemonic: string
   protected key: KeyPair
   protected wallet: WalletContract
+  protected disableAddressCheck: boolean
 
   protected log: (log: string) => void
   protected workInterval: number | NodeJS.Timer
 
-  constructor(config: Config, nfts: Nft[], log?: (log: string) => void) {
+  constructor(
+    config: Config,
+    nfts: Nft[],
+    disableAddressCheck = false,
+    log?: (log: string) => void
+  ) {
     this.config = config
     this.nfts = nfts
 
     this.deployIndex = this.config.startIndex
 
     this.mnemonic = config.walletMnemonic
+    this.disableAddressCheck = disableAddressCheck
 
     const tonApiEndpoint = config.tonApiKey
       ? `${config.tonApiUrl}?api_key=${config.tonApiKey}`
@@ -68,11 +75,13 @@ class Deployer {
     const walletAddress = await this.wallet.getAddress()
     const stringAddress = walletAddress.toString(true, true, true)
 
-    if (this.config.walletAddress !== stringAddress) {
-      this.log(
-        `Config address: ${this.config.walletAddress}, Mnemonic address: ${stringAddress}, Config wallet type: ${this.config.walletType}`
-      )
-      throw new Error('[Deployer] Wallet address mismatch')
+    if (!this.disableAddressCheck) {
+      if (this.config.walletAddress !== stringAddress) {
+        this.log(
+          `Config address: ${this.config.walletAddress}, Mnemonic address: ${stringAddress}, Config wallet type: ${this.config.walletType}`
+        )
+        throw new Error('[Deployer] Wallet address mismatch')
+      }
     }
 
     const collection = await this.ensureCollection()
