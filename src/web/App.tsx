@@ -142,6 +142,16 @@ function App() {
           https://github.com/tondiamonds/ton-nft-deployer
         </a>
       </Description>
+      <Description>
+        You can also try safer tonconnect based tool here{' '}
+        <a
+          href="https://truecarry.github.io/ton-collection-edit/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://truecarry.github.io/ton-collection-edit/
+        </a>
+      </Description>
 
       <FormConfig config={config} setConfig={setConfig} />
       <NftInput nfts={nfts} setNfts={setNfts} addLog={addLog} />
