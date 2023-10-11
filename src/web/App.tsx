@@ -71,7 +71,13 @@ function App() {
       if (deployConfig) {
         const cnf = JSON.parse(deployConfig)
         if (cnf) {
-          setConfig(cnf)
+          setConfig((oldConfig) => {
+            return {
+              ...oldConfig,
+              ...cnf,
+              walletMnemonic: oldConfig.walletMnemonic,
+            }
+          })
         }
       }
 
@@ -89,10 +95,13 @@ function App() {
       return
     }
 
-    if (window.localStorage) {
-      window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(config))
-      window.localStorage.setItem('ton_nft_deploy_nfts', JSON.stringify(nfts))
+    if (!window.localStorage) {
+      return
     }
+
+    const configWithoutMnemonic = { ...config, walletAddress: undefined }
+    window.localStorage.setItem('ton_nft_deploy_config', JSON.stringify(configWithoutMnemonic))
+    window.localStorage.setItem('ton_nft_deploy_nfts', JSON.stringify(nfts))
   }, [config, nfts])
 
   const addLog = (text: string) => {
@@ -102,7 +111,7 @@ function App() {
   const startDeploy = async () => {
     try {
       await checkConfig(config)
-      const _deployer = new Deployer(config, nfts, addLog)
+      const _deployer = new Deployer(config, nfts, true, addLog)
       await _deployer.start()
       setDeployer(_deployer)
     } catch (e) {
@@ -131,6 +140,16 @@ function App() {
           rel="noopener noreferrer"
         >
           https://github.com/tondiamonds/ton-nft-deployer
+        </a>
+      </Description>
+      <Description>
+        You can also try safer tonconnect based tool here{' '}
+        <a
+          href="https://truecarry.github.io/ton-collection-edit/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://truecarry.github.io/ton-collection-edit/
         </a>
       </Description>
 
